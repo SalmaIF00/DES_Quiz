@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<title>Pregunta 4</title>
+</head>
+
+<body>
+	<h1>Pregunta 4</h1>
+	<form th:action="@{/pregunta4}" method="POST">
+		<label>¿Que significa "Valar Morghulis"?</label><br>
+		<img th:src="@{'img/pregunta4.jpg'}"><br>
+		<input type="radio" name="pregunta4" value="Todos los hombres moriran">Todos los hombres moriran<br>
+		<input type="radio" name="pregunta4" value="Todos los hombres deben morir">Todos los hombres deben morir
+		<!--Verdadera--><br>
+		<input type="radio" name="pregunta4" value="Todos los hombres deben luchar">Todos los hombres deben luchar<br>
+		<input type="radio" name="pregunta4" value="Todos los hombres pueden reinar">Todos los hombres pueden
+		reinar<br><br>
+		<button type="submit" name="siguiente" value="Siguiente">Siguiente</button>
+</body>
+
+</html>

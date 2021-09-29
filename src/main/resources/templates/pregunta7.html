@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<title>Pregunta 7</title>
+</head>
+
+<body>
+	<h1>Pregunta 7</h1>
+	<form th:action="@{/pregunta7}" method="POST">
+		<label>Jon Snow vence en la batalla de los bastardos gracias a..</label><br>
+		<img th:src="@{'img/pregunta6.jpg'}"><br>
+		<input type="radio" name="pregunta7" value="Rickon Stark">Rickon Stark<br>
+		<input type="radio" name="pregunta7" value="Petyr Baelish">Petyr Baelish
+		<!--Verdadera--><br>
+		<input type="radio" name="pregunta7" value="El gigante Wun Wun">El gigante Wun Wun<br>
+		<input type="radio" name="pregunta7" value="Davos Seaworth">Davos Seaworth<br><br>
+		<button type="submit" name="siguiente" value="Siguiente">Siguiente</button>
+</body>
+
+</html>

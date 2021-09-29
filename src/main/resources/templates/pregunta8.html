@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<title>Pregunta 8</title>
+</head>
+
+<body>
+	<h1>Pregunta 8</h1>
+	<form th:action="@{/pregunta8}" method="POST">
+		<label>¿Cual de los siguientes es el lema de la Casa Stark?</label><br>
+		<img th:src="@{'img/pregunta7.jpg'}"><br>
+		<select name="pregunta8">
+			<option value="Crecer fuerte">Crecer fuerte</option>
+			<option value="Un Stark siempre paga sus deudas">Un Stark siempre paga sus deudas</option>
+			<option value="Se acerca el invierno">Se acerca el invierno</option>
+			<!--Verdadera-->
+			<option value="Nuestra es la furia">Nuestra es la furia</option>
+		</select><br><br>
+		<button type="submit" name="siguiente" value="Enviar">Siguiente</button>
+</body>
+
+</html>
