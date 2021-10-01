@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<title>Resultado</title>
+</head>
+
+<body>
+	<h1>Resultado</h1>
+		<form th:action="@{/resultado}" method="POST">
+		<!--><img th:src="@{'img/resultado1.gif'}"><br>
+		<img th:src="@{'img/resultado2.gif'}"><br>
+		<!-->
+		<p th:text=${puntuacion}></p>
+		<button type="submit" value="inicio" name=" inicio">Volver al Inicio</button>
+		</form>
+	
+</body>
+
+</html>
+

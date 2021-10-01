@@ -16,121 +16,283 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class Controlador {
+//Inicio
+
 //Pregunta 1
-	@RequestMapping(value = "/pregunta1", method = RequestMethod.GET)
-	public String pregunta1_get() {
+	@GetMapping("/pregunta1")
+	public String process1(Model model, HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES1");
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+		model.addAttribute("sessionMessages", messages);
 		return "pregunta1";
 	}
 
-	@RequestMapping(value = "/pregunta1", method = RequestMethod.POST)
-	public String pregunta1_post(Model modelo) {
-
+	@PostMapping("/pregunta1")
+	public String persistMessage1(@RequestParam("pregunta1") String pregunta1, HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES1");
+		if (messages == null) {
+			messages = new ArrayList<>();
+			request.getSession().setAttribute("MY_SESSION_MESSAGES1", messages);
+		}
+		messages.add(pregunta1);
+		request.getSession().setAttribute("MY_SESSION_MESSAGES1", messages);
 		return "redirect:/pregunta2";
-
 	}
-	
 
 //Pregunta 2
-	@RequestMapping(value = "/pregunta2", method = RequestMethod.GET)
-	public String pregunta2_get() {
+	@GetMapping("/pregunta2")
+	public String process2(Model model, HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES2");
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+		model.addAttribute("sessionMessages", messages);
 		return "pregunta2";
 	}
 
-	@RequestMapping(value = "/pregunta2", method = RequestMethod.POST)
-	public String pregunta2_post(Model modelo) {
-
+	@PostMapping("/pregunta2")
+	public String persistMessage2(@RequestParam("pregunta2") String pregunta2, HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES2");
+		if (messages == null) {
+			messages = new ArrayList<>();
+			request.getSession().setAttribute("MY_SESSION_MESSAGES2", messages);
+		}
+		messages.add(pregunta2);
+		request.getSession().setAttribute("MY_SESSION_MESSAGES2", messages);
 		return "redirect:/pregunta3";
-
 	}
 
 //Pregunta 3
-	@RequestMapping(value = "/pregunta3", method = RequestMethod.GET)
-	public String pregunta3_get() {
+	@GetMapping("/pregunta3")
+	public String process3(Model model, HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES3");
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+		model.addAttribute("sessionMessages", messages);
 		return "pregunta3";
 	}
 
-	@RequestMapping(value = "/pregunta3", method = RequestMethod.POST)
-	public String pregunta3_post(Model modelo) {
-
+	@PostMapping("/pregunta3")
+	public String persistMessage3(@RequestParam("pregunta3") String pregunta3, HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES3");
+		if (messages == null) {
+			messages = new ArrayList<>();
+			request.getSession().setAttribute("MY_SESSION_MESSAGES3", messages);
+		}
+		messages.add(pregunta3);
+		request.getSession().setAttribute("MY_SESSION_MESSAGES3", messages);
 		return "redirect:/pregunta4";
-
 	}
 
 //Pregunta 4
-	@RequestMapping(value = "/pregunta4", method = RequestMethod.GET)
-	public String pregunta4_get() {
+	@GetMapping("/pregunta4")
+	public String process4(Model model, HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES4");
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+		model.addAttribute("sessionMessages", messages);
 		return "pregunta4";
 	}
 
-	@RequestMapping(value = "/pregunta4", method = RequestMethod.POST)
-	public String pregunta4_post(Model modelo) {
-
+	@PostMapping("/pregunta4")
+	public String persistMessage4(@RequestParam("pregunta4") String pregunta4, HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES4");
+		if (messages == null) {
+			messages = new ArrayList<>();
+			request.getSession().setAttribute("MY_SESSION_MESSAGES4", messages);
+		}
+		messages.add(pregunta4);
+		request.getSession().setAttribute("MY_SESSION_MESSAGES4", messages);
 		return "redirect:/pregunta5";
-
 	}
 
 //Pregunta 5
-	@RequestMapping(value = "/pregunta5", method = RequestMethod.GET)
-	public String pregunta5_get() {
+	@GetMapping("/pregunta5")
+	public String process5(Model model, HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES5");
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+		model.addAttribute("sessionMessages", messages);
 		return "pregunta5";
 	}
 
-	@RequestMapping(value = "/pregunta5", method = RequestMethod.POST)
-	public String pregunta5_post(Model modelo) {
-
+	@PostMapping("/pregunta5")
+	public String persistMessage5(@RequestParam("pregunta5") String pregunta5, HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES5");
+		if (messages == null) {
+			messages = new ArrayList<>();
+			request.getSession().setAttribute("MY_SESSION_MESSAGES5", messages);
+		}
+		messages.add(pregunta5);
+		request.getSession().setAttribute("MY_SESSION_MESSAGES5", messages);
 		return "redirect:/pregunta6";
-
 	}
 
 //Pregunta 6
-	@RequestMapping(value = "/pregunta6", method = RequestMethod.GET)
-	public String pregunta6_get() {
+	@GetMapping("/pregunta6")
+	public String process6(Model model, HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES6");
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+		model.addAttribute("sessionMessages", messages);
 		return "pregunta6";
 	}
 
-	@RequestMapping(value = "/pregunta6", method = RequestMethod.POST)
-	public String pregunta6_post(Model modelo) {
-
+	@PostMapping("/pregunta6")
+	public String persistMessage6(@RequestParam("pregunta6") String pregunta6, HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES6");
+		if (messages == null) {
+			messages = new ArrayList<>();
+			request.getSession().setAttribute("MY_SESSION_MESSAGES6", messages);
+		}
+		messages.add(pregunta6);
+		request.getSession().setAttribute("MY_SESSION_MESSAGES6", messages);
 		return "redirect:/pregunta7";
-
 	}
 
 //Pregunta 7
-	@RequestMapping(value = "/pregunta7", method = RequestMethod.GET)
-	public String pregunta7_get() {
+	@GetMapping("/pregunta7")
+	public String process7(Model model, HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES7");
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+		model.addAttribute("sessionMessages", messages);
 		return "pregunta7";
 	}
 
-	@RequestMapping(value = "/pregunta7", method = RequestMethod.POST)
-	public String pregunta7_post(Model modelo) {
-
+	@PostMapping("/pregunta7")
+	public String persistMessage7(@RequestParam("pregunta7") String pregunta7, HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES7");
+		if (messages == null) {
+			messages = new ArrayList<>();
+			request.getSession().setAttribute("MY_SESSION_MESSAGES7", messages);
+		}
+		messages.add(pregunta7);
+		request.getSession().setAttribute("MY_SESSION_MESSAGES7", messages);
 		return "redirect:/pregunta8";
-
 	}
 
 //Pregunta 8
-	@RequestMapping(value = "/pregunta8", method = RequestMethod.GET)
-	public String pregunta8_get() {
+	@GetMapping("/pregunta8")
+	public String process8(Model model, HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES8");
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+		model.addAttribute("sessionMessages", messages);
 		return "pregunta8";
 	}
 
-	@RequestMapping(value = "/pregunta8", method = RequestMethod.POST)
-	public String pregunta8_post(Model modelo) {
-
+	@PostMapping("/pregunta8")
+	public String persistMessage8(@RequestParam("pregunta8") String pregunta8, HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES8");
+		if (messages == null) {
+			messages = new ArrayList<>();
+			request.getSession().setAttribute("MY_SESSION_MESSAGES8", messages);
+		}
+		messages.add(pregunta8);
+		request.getSession().setAttribute("MY_SESSION_MESSAGES8", messages);
 		return "redirect:/pregunta9";
-
 	}
 
 //Pregunta 9
-	@RequestMapping(value = "/pregunta9", method = RequestMethod.GET)
-	public String pregunta9_get() {
+	@GetMapping("/pregunta9")
+	public String process9(Model model, HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES9");
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+		model.addAttribute("sessionMessages", messages);
 		return "pregunta9";
 	}
 
-	@RequestMapping(value = "/pregunta9", method = RequestMethod.POST)
-	public String pregunta9_post(Model modelo) {
-
-		return "redirect:/Resultado";
-
+	@PostMapping("/pregunta9")
+	public String persistMessage9(@RequestParam("pregunta9") String pregunta9, HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES9");
+		if (messages == null) {
+			messages = new ArrayList<>();
+			request.getSession().setAttribute("MY_SESSION_MESSAGES9", messages);
+		}
+		messages.add(pregunta9);
+		request.getSession().setAttribute("MY_SESSION_MESSAGES9", messages);
+		return "redirect:/pregunta10";
 	}
+
+	// Pregunta 10
+	@GetMapping("/pregunta10")
+	public String process10(Model model, HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES10");
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+		model.addAttribute("sessionMessages", messages);
+		return "pregunta10";
+	}
+
+	@PostMapping("/pregunta10")
+	public String persistMessage10(@RequestParam("pregunta10") String pregunta9, HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES10");
+		if (messages == null) {
+			messages = new ArrayList<>();
+			request.getSession().setAttribute("MY_SESSION_MESSAGES10", messages);
+		}
+		messages.add(pregunta9);
+		request.getSession().setAttribute("MY_SESSION_MESSAGES10", messages);
+		return "redirect:/resultado";
+	}
+
+// resultado
+	@GetMapping("/resultado")
+	public String processR(Model model, HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGESR");
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+
+		int puntuacion = 0;
+		for (int i = 0; i <= messages.size(); i++) {
+			if (messages.equals("Correcto")) {
+				puntuacion += 1;
+			} else {
+				puntuacion += 0;
+			}
+		}
+		model.addAttribute("puntuacion", puntuacion);
+		return "resultado";
+	}
+
+	@PostMapping("/resultado")
+	public String destroySession(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "redirect:/pregunta1";
+	}
+
 }

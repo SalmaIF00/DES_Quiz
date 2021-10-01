@@ -14,11 +14,11 @@
 	<form th:action="@{/pregunta2}" method="POST">
 		<label>¿Como se llama realmente Jon Snow?</label><br>
 		<img src="img/pregunta2.jpg"><br>
-		<input type="button" name="pregunta2" value="Rhaegar Targaryen">
-		<input type="button" name="pregunta2" value="Jon Stark">
-		<input type="button" name="pregunta2" value="Aegon Targaryen">
+		<input type="radio" name="pregunta2" value="Incorrecto"> Rhaegar Targaryen<br>
+		<input type="radio" name="pregunta2" value="Incorrecto">Jon Stark<br>
+		<input type="radio" name="pregunta2" value="Correcto">Aegon Targaryen
 		<!--verdadera--><br>
-		<input type="button" name="pregunta2" value="Bran Lannister"><br><br>
+		<input type="radio" name="pregunta2" value="Incorrecto">Bran Lannister<br><br>
 		<button type="submit" name="siguiente" value="Siguiente">Siguiente</button>
 	</form>
 </body>
