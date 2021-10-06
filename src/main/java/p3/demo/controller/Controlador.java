@@ -282,10 +282,8 @@ public class Controlador {
 			
 			String message = messages.get(i);
 			
-			System.err.println();
-			
 			if (message.equals("Correcto")|| message.equals("Correcta")) {
-				puntuacion= puntuacion+ 1;
+				puntuacion= puntuacion+1;
 			} else {
 				puntuacion=puntuacion+0;
 			}
