@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +15,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import p3.demo.controladorbbdd.Usuario;
+import p3.demo.controladorbbdd.UsuarioDao;
+
 @Controller
 public class Controlador {
+	
 //Inicio
-
+	@Autowired
+	private UsuarioDao usuariodao;
+	@RequestMapping(value="/inicio", method=RequestMethod.GET)
+	public String index(Model modelo, HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES");
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+	List<Usuario> usuario = usuariodao.save();
+	modelo.addAttribute("nombre",usuario);
+	return "inicio";
+	}
+	
+	@PostMapping("/inicio")
+	public String persistMessage(@RequestParam("inicio") String inicio, HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES");
+		if (messages == null) {
+			messages = new ArrayList<>();
+			request.getSession().setAttribute("MY_SESSION_MESSAGES", messages);
+		}
+		messages.add(inicio);
+		request.getSession().setAttribute("MY_SESSION_MESSAGES", messages);
+		return "redirect:/pregunta1";
+	}
+	
 //Pregunta 1
 	@GetMapping("/pregunta1")
 	public String process1(Model model, HttpSession session) {

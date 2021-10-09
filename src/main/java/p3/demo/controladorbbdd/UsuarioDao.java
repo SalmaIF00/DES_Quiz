@@ -10,7 +10,7 @@ public interface UsuarioDao {
 
 	int update(Usuario usuario);
 
-	int deleteById(int id);
+	int deleteById(Integer id);
 
 	List<Usuario> findAll();
 

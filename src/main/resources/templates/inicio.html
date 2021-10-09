@@ -11,12 +11,11 @@
 
 <body>
 	<h1>Inicio</h1>
-		<form th:action="@{/inicio}" method="POST"></form>
-			<h1>Inicio</h1>
+		<form th:action="@{/inicio.gif}" method="POST"></form>
+			<h1>¿CUANTO SABES DE GAME OF THRONES?</h1>
 		<img th:src="@{'img/inicio.gif'}"><br>
 		<label>Nombre:</label>
-		<input type=text value="nombre" name="nombre">
+		<input type=text value="nombre" name="nombre" placeholder="Nombre">
 		<button type="submit" value="empezar" name="empezar">Empezar</button>
-		</form>
 </body>
 </html>

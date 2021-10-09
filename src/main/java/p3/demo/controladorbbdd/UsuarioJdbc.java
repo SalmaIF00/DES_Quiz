@@ -18,6 +18,12 @@ public class UsuarioJdbc implements UsuarioDao {
 				usuario.getNombre(),
 				usuario.getPuntuacion());
 	}
+	
+	@Override
+	public List<Usuario> findAll() {
+	return jdbcTemplate.query("SELECT * FROM Usuarios", (rs, rowNum) -> 
+	new Usuario(rs.getInt("id"), rs.getString("nombre"),rs.getInt("puntos")));
+	}
 
 	@Override
 	public int count() {
@@ -29,18 +35,6 @@ public class UsuarioJdbc implements UsuarioDao {
 	public int update(Usuario usuario) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	public int deleteById(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<Usuario> findAll() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -59,6 +53,12 @@ public class UsuarioJdbc implements UsuarioDao {
 	public String getNombreById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int deleteById(Integer id) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

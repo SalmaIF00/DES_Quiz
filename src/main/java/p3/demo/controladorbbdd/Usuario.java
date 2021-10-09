@@ -2,7 +2,7 @@ package p3.demo.controladorbbdd;
 
 //Clase Usuario
 public class Usuario {
-	private Integer id;
+	private int id;
 	private String nombre;
 	private Integer puntuacion;
 
@@ -15,7 +15,7 @@ public class Usuario {
 
 	// Getters y Setters
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
