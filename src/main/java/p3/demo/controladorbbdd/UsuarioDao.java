@@ -19,4 +19,5 @@ public interface UsuarioDao {
 	Optional<Usuario> findById(Integer id);
 
 	String getNombreById(Integer id);
+	
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<title>Pregunta 6</title>
+</head>
+
+<body>
+	<h1>Pregunta 6</h1>
+	<form th:action="@{/pregunta6}" method="POST">
+		<label>¿Como se llaman los dragones de Daenerys?</label><br>
+		<img th:src="@{'img/dragones.webp'}"><br>
+		<input type="radio" name="pregunta6" value="Incorrecto">Drogon,Rhaezal y Viserio<br>
+		<input type="radio" name="pregunta6" value="Incorrecto">Drakos,Rhaegal y Valerian<br>
+		<input type="radio" name="pregunta6" value="Correcto">Drogon, Rhaegal y Viserion
+		<!--Verdadera--><br>
+		<input type="radio" name="pregunta6" value="Incorrecto">Drogon,Thanatos y Viseiron<br><br>
+		<button type="submit" name="siguiente" value="Siguiente">Siguiente</button>
+</body>
+
+</html> 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<title>Pregunta 2</title>
+</head>
+
+<body>
+	<h1>Pregunta 2</h1>
+	<form th:action="@{/pregunta2}" method="POST">
+		<label>¿Como se llama realmente Jon Snow?</label><br>
+		<img src="img/pregunta2.jpg"><br>
+		<input type="radio" name="pregunta2" value="Incorrecto"> Rhaegar Targaryen<br>
+		<input type="radio" name="pregunta2" value="Incorrecto">Jon Stark<br>
+		<input type="radio" name="pregunta2" value="Correcto">Aegon Targaryen
+		<!--verdadera--><br>
+		<input type="radio" name="pregunta2" value="Incorrecto">Bran Lannister<br><br>
+		<button type="submit" name="siguiente" value="Siguiente">Siguiente</button>
+	</form>
+</body>
+
+</html>

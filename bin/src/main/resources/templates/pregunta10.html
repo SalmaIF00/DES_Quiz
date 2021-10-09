@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<title>Pregunta 10</title>
+</head>
+
+<body>
+	<h1>Pregunta 10</h1>
+	<form th:action="@{/pregunta10}" method="POST">
+		<label>¿Quien es el enemigo comun en la temporada 7?</label><br>
+		<img th:src="@{'img/pregunta10.jpg'}"><br>
+		<input type="radio" name="pregunta10" value="Incorrecto">Cersei Lannister<br>
+		<input type="radio" name="pregunta10" value="Incorrecto">Daenerys Targaryen<br>
+		<input type="radio" name="pregunta10" value="Incorrecto">El gorrion supremo<br>
+		<input type="radio" name="pregunta10" value="Correcto">Los caminantes blancos
+		<!--Verdadera--><br><br>
+		</select>
+		
+		<button type="submit" name="siguiente" value="Enviar">Enviar</button>
+	</form>
+</body>
+
+</html>

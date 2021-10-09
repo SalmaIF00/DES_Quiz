@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<title>Pregunta 3</title>
+</head>
+
+<body>
+	<h1>Pregunta 3</h1>
+	<form th:action="@{/pregunta3}" method="POST">
+		<label>¿Que personaje ha sido el mayor serial killer de Juego de tronos?</label><br>
+		<img th:src="@{'img/pregunta3.jpeg'}"><br>
+		<input type="radio" name="pregunta3" value="Incorrecto">Cersei Lannister<br>
+		<input type="radio" name="pregunta3" value="Correcto">Arya Stark
+		<!--Verdadera--><br>
+		<input type="radio" name="pregunta3" value="Incorrecto">Daenerys Targaryen<br>
+		<input type="radio" name="pregunta3" value="Incorrecto">Jhon Snow<br><br>
+		<button type="submit" name="siguiente" value="Siguiente">Siguiente</button>
+</body>
+
+</html>
