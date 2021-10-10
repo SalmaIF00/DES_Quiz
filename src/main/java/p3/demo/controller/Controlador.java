@@ -22,19 +22,17 @@ import p3.demo.controladorbbdd.UsuarioDao;
 public class Controlador {
 	
 //Inicio
-	@Autowired
-	private UsuarioDao usuariodao;
-	@RequestMapping(value="/inicio", method=RequestMethod.GET)
-	public String index(Model modelo, HttpSession session) {
+	@GetMapping("/inicio")
+	public String inicio(Model model, HttpSession session) {
 		@SuppressWarnings("unchecked")
 		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES");
 		if (messages == null) {
 			messages = new ArrayList<>();
 		}
-	List<Usuario> usuario = usuariodao.save();
-	modelo.addAttribute("nombre",usuario);
-	return "inicio";
+		model.addAttribute("sessionMessages", messages);
+		return "inicio";
 	}
+	
 	
 	@PostMapping("/inicio")
 	public String persistMessage(@RequestParam("inicio") String inicio, HttpServletRequest request) {
@@ -326,7 +324,7 @@ public class Controlador {
 	@PostMapping("/resultado")
 	public String destroySession(HttpServletRequest request) {
 		request.getSession().invalidate();
-		return "redirect:/pregunta1";
+		return "redirect:/inicio";
 	}
 
 }
