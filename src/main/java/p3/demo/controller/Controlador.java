@@ -20,7 +20,7 @@ import p3.demo.controladorbbdd.UsuarioDao;
 
 @Controller
 public class Controlador {
-	
+
 //Inicio
 	@GetMapping("/inicio")
 	public String inicio(Model model, HttpSession session) {
@@ -32,21 +32,21 @@ public class Controlador {
 		model.addAttribute("sessionMessages", messages);
 		return "inicio";
 	}
-	
-	
+
 	@PostMapping("/inicio")
-	public String persistMessage(@RequestParam("inicio") String inicio, HttpServletRequest request) {
+	public String persistMessage(@RequestParam("nombre") String nombre, HttpServletRequest request) {
 		@SuppressWarnings("unchecked")
 		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES");
 		if (messages == null) {
 			messages = new ArrayList<>();
 			request.getSession().setAttribute("MY_SESSION_MESSAGES", messages);
 		}
-		messages.add(inicio);
+		messages.add(nombre);
+
 		request.getSession().setAttribute("MY_SESSION_MESSAGES", messages);
 		return "redirect:/pregunta1";
 	}
-	
+
 //Pregunta 1
 	@GetMapping("/pregunta1")
 	public String process1(Model model, HttpSession session) {
@@ -305,16 +305,16 @@ public class Controlador {
 		if (messages == null) {
 			messages = new ArrayList<>();
 		}
-
+		
 		int puntuacion = 0;
 		for (int i = 0; i < messages.size(); i++) {
-			
+
 			String message = messages.get(i);
-			
-			if (message.equals("Correcto")|| message.equals("Correcta")) {
-				puntuacion= puntuacion+1;
+
+			if (message.equals("Correcto") || message.equals("Ciervo") || message.equals("Cersei")|| message.equals("Tiryon")) {
+				puntuacion = puntuacion + 1;
 			} else {
-				puntuacion=puntuacion+0;
+				puntuacion = puntuacion + 0;
 			}
 		}
 		model.addAttribute("puntuacion", puntuacion);
@@ -325,6 +325,16 @@ public class Controlador {
 	public String destroySession(HttpServletRequest request) {
 		request.getSession().invalidate();
 		return "redirect:/inicio";
+	}
+
+	@Autowired
+	private UsuarioDao usuariodao;
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(Model modelo) {
+		List<Usuario> libros = usuariodao.findAll();
+		modelo.addAttribute("libros", libros);
+		return "libros";
 	}
 
 }
