@@ -17,35 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import p3.demo.controladorbbdd.Usuario;
 import p3.demo.controladorbbdd.UsuarioDao;
+import p3.demo.controladorbbdd.UsuarioJdbc;
 
 @Controller
 public class Controlador {
 
-//Inicio
-	@GetMapping("/inicio")
-	public String inicio(Model model, HttpSession session) {
-		@SuppressWarnings("unchecked")
-		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES");
-		if (messages == null) {
-			messages = new ArrayList<>();
-		}
-		model.addAttribute("sessionMessages", messages);
-		return "inicio";
-	}
-
-	@PostMapping("/inicio")
-	public String persistMessage(@RequestParam("nombre") String nombre, HttpServletRequest request) {
-		@SuppressWarnings("unchecked")
-		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES");
-		if (messages == null) {
-			messages = new ArrayList<>();
-			request.getSession().setAttribute("MY_SESSION_MESSAGES", messages);
-		}
-		messages.add(nombre);
-
-		request.getSession().setAttribute("MY_SESSION_MESSAGES", messages);
-		return "redirect:/pregunta1";
-	}
+	@Autowired
+	UsuarioDao usuarioDao;
 
 //Pregunta 1
 	@GetMapping("/pregunta1")
@@ -285,56 +263,51 @@ public class Controlador {
 	}
 
 	@PostMapping("/pregunta10")
-	public String persistMessage10(@RequestParam("pregunta10") String pregunta10, HttpServletRequest request) {
+	public String persistMessage10(@RequestParam("pregunta10") String pregunta10, HttpServletRequest request,
+			Model model, @RequestParam String nombre) {
 		@SuppressWarnings("unchecked")
 		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES");
 		if (messages == null) {
 			messages = new ArrayList<>();
 			request.getSession().setAttribute("MY_SESSION_MESSAGES", messages);
+			
+		}
+		int puntuacion = 0;
+		for (int i = 0; i < messages.size(); i++) {
+
+			String message = messages.get(i);
+
+			if (message.equals("Correcto") || message.equals("Ciervo") || message.equals("Tiryon")) {
+				puntuacion = puntuacion + 1;
+			} else {
+				puntuacion = puntuacion + 0;
+			}
 		}
 		messages.add(pregunta10);
+		model.addAttribute("puntuacion", puntuacion);
+		model.addAttribute("nombre", nombre);
+		Usuario usuario1 = new Usuario(0, nombre, puntuacion);
+		usuarioDao.save(usuario1);
 		request.getSession().setAttribute("MY_SESSION_MESSAGES", messages);
 		return "redirect:/resultado";
 	}
 
 // resultado
 	@GetMapping("/resultado")
-	public String processR(Model model, HttpSession session) {
+	public String process(Model model, HttpSession session) {
 		@SuppressWarnings("unchecked")
 		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES");
 		if (messages == null) {
 			messages = new ArrayList<>();
 		}
-		
-		int puntuacion = 0;
-		for (int i = 0; i < messages.size(); i++) {
-
-			String message = messages.get(i);
-
-			if (message.equals("Correcto") || message.equals("Ciervo") || message.equals("Cersei")|| message.equals("Tiryon")) {
-				puntuacion = puntuacion + 1;
-			} else {
-				puntuacion = puntuacion + 0;
-			}
-		}
-		model.addAttribute("puntuacion", puntuacion);
+		model.addAttribute("sessionMessages", messages);
 		return "resultado";
 	}
+	
 
 	@PostMapping("/resultado")
 	public String destroySession(HttpServletRequest request) {
 		request.getSession().invalidate();
-		return "redirect:/inicio";
+		return "redirect:/pregunta1";
 	}
-
-	@Autowired
-	private UsuarioDao usuariodao;
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Model modelo) {
-		List<Usuario> libros = usuariodao.findAll();
-		modelo.addAttribute("libros", libros);
-		return "libros";
-	}
-
 }
