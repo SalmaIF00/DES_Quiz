@@ -23,7 +23,7 @@ import p3.demo.controladorbbdd.UsuarioJdbc;
 public class Controlador {
 
 	@Autowired
-	UsuarioDao usuarioDao;
+	private UsuarioDao usuarioDao;
 
 //Pregunta 1
 	@GetMapping("/pregunta1")
@@ -300,7 +300,10 @@ public class Controlador {
 		if (messages == null) {
 			messages = new ArrayList<>();
 		}
-		model.addAttribute("sessionMessages", messages);
+		
+		List<Usuario> ResultadoUsuarios = usuarioDao.findAll();
+		model.addAttribute("titulo","Resultados");
+		model.addAttribute("usuario", ResultadoUsuarios);
 		return "resultado";
 	}
 	

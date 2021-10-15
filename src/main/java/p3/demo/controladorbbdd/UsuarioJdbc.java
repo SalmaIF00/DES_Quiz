@@ -22,7 +22,7 @@ public class UsuarioJdbc implements UsuarioDao {
 	@Override
 	public List<Usuario> findAll() {
 	return jdbcTemplate.query("SELECT * FROM Usuarios", (rs, rowNum) -> 
-	new Usuario(rs.getInt("id"), rs.getString("nombre"),rs.getInt("puntos")));
+	new Usuario(rs.getInt("id"), rs.getString("nombre"),rs.getInt("puntuacion")));
 	}
 
 	@Override
