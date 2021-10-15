@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<title>Formulario</title>
+</head>
+
+<body>
+	<h1>Formulario</h1>
+	<form th:action="@{/formulario}" method="POST">
+	<p>Ahora introduzca su nombre para conocer su resultado del quiz:</p><br>
+			<img th:src="@{'img/inicio.gif'}"><br>
+
+		<label>Introduzca el nombre aqui:</label>
+		<input type=text name="nombre" placeholder="Nombre">
+		<button type="submit" name="siguiente" value="Siguiente">Siguiente</button>
+		</select>
+	</form>
+</body>
+
+</html>

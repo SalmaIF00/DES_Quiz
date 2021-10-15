@@ -24,7 +24,7 @@ public class Controlador {
 
 	@Autowired
 	private UsuarioDao usuarioDao;
-
+//
 //Pregunta 1
 	@GetMapping("/pregunta1")
 	public String process1(Model model, HttpSession session) {
@@ -264,13 +264,39 @@ public class Controlador {
 
 	@PostMapping("/pregunta10")
 	public String persistMessage10(@RequestParam("pregunta10") String pregunta10, HttpServletRequest request,
+			Model model) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES");
+		if (messages == null) {
+			messages = new ArrayList<>();
+			request.getSession().setAttribute("MY_SESSION_MESSAGES", messages);
+
+		}
+		messages.add(pregunta10);
+		request.getSession().setAttribute("MY_SESSION_MESSAGES", messages);
+		return "redirect:/formulario";
+	}
+//formulario
+	@GetMapping("/formulario")
+	public String processF(Model model, HttpSession session) {
+		@SuppressWarnings("unchecked")
+		List<String> messages = (List<String>) session.getAttribute("MY_SESSION_MESSAGES");
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+		model.addAttribute("sessionMessages", messages);
+		return "formulario";
+	}
+
+	@PostMapping("/formulario")
+	public String persistMessageF(HttpServletRequest request,
 			Model model, @RequestParam String nombre) {
 		@SuppressWarnings("unchecked")
 		List<String> messages = (List<String>) request.getSession().getAttribute("MY_SESSION_MESSAGES");
 		if (messages == null) {
 			messages = new ArrayList<>();
 			request.getSession().setAttribute("MY_SESSION_MESSAGES", messages);
-			
+
 		}
 		int puntuacion = 0;
 		for (int i = 0; i < messages.size(); i++) {
@@ -283,7 +309,7 @@ public class Controlador {
 				puntuacion = puntuacion + 0;
 			}
 		}
-		messages.add(pregunta10);
+		
 		model.addAttribute("puntuacion", puntuacion);
 		model.addAttribute("nombre", nombre);
 		Usuario usuario1 = new Usuario(0, nombre, puntuacion);
@@ -300,13 +326,12 @@ public class Controlador {
 		if (messages == null) {
 			messages = new ArrayList<>();
 		}
-		
+
 		List<Usuario> ResultadoUsuarios = usuarioDao.findAll();
-		model.addAttribute("titulo","Resultados");
+		model.addAttribute("titulo", "Resultados");
 		model.addAttribute("usuario", ResultadoUsuarios);
 		return "resultado";
 	}
-	
 
 	@PostMapping("/resultado")
 	public String destroySession(HttpServletRequest request) {
